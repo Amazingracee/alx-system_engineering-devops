@@ -1,1 +1,1 @@
-Print absolute path name
+Absolute path command

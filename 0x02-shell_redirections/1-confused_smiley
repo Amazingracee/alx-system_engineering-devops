@@ -1,2 +1,2 @@
 #!/bin/bash
-"\U0001F615"
+printf "\U0001F615"

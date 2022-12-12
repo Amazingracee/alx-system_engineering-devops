@@ -1,5 +1,0 @@
-#!/usr/bin/env bash 
-# This is a Bash that uses ssh to connect to your server using
-# the private key ~/.ssh/school
-# "-i" is an ssh command flag that specifies an identity file
-ssh ubuntu@52.87.216.118 -i ~/.ssh/school

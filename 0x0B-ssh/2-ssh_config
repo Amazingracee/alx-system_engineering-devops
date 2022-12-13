@@ -1,0 +1,6 @@
+# configure SSH client
+Host *
+    PasswordAuthentication no
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/school
+    Port 22

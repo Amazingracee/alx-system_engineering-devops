@@ -1,22 +1,11 @@
-#!usr/bin/env bash
-# redirect me
-sudo apt update
-sudo apt -y install nginx
-sudo ufw allow 'Nginx HTTP'
-sudo mkdir -p /var/www/html
-sudo chown -R "$USER":"$USER" /var/www/html
-echo "Hello World!" > /var/www/html/index.html
-echo "
-server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+#!/usr/bin/env bash
+# Script that configures a new Ubuntu machine to respect above requirements
 
-	root /var/www/html;
-	index index.html index.htm index.nginx-debian.html;
+sudo apt-get update
+sudo apt-get install -y nginx
 
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}
+echo "Hello World!" | sudo tee /var/www/html/index.html
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.blog.ehoneahobed.com permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-}" | sudo tee /etc/nginx/sites-available/default
 sudo service nginx restart
